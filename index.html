@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esther Dolado — Fotografía documental de maternidad en Madrid</title>
+<meta name="description" content="Fotografía documental de embarazo, postparto, recién nacido y familia en Madrid. Sin posados, tal y como lo vives.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --ink:#222120;
+    --soft:#77736d;
+    --line:#ebe8e3;
+    --tint:#f6f4f0;
+    --accent:#a9824a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:0;line-height:1.12;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-size:0.74rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--soft);
+  }
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--accent);outline-offset:3px;
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important;transition:none !important;}
+  }
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 28px;max-width:1120px;margin:0 auto;
+  }
+  .logo{font-size:0.82rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:500;}
+  .logo span{font-weight:300;color:var(--soft);}
+  .links{display:flex;gap:34px;font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);}
+  .links a:hover{color:var(--ink);}
+  .burger{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink);}
+  @media (max-width:720px){
+    .links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:18px;padding:24px 28px;
+      background:var(--white);border-bottom:1px solid var(--line);
+    }
+    .links.open{display:flex;}
+    .burger{display:block;}
+    .logo span{display:none;}
+  }
+
+  /* PORTADA */
+  .cover{
+    position:relative;
+    width:100%;
+    height:clamp(240px,42vw,520px);
+    margin:0;
+    background:var(--tint);
+    overflow:hidden;
+  }
+  .cover img{width:100%;height:100%;object-fit:cover;}
+  .cover::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,.12) 55%,rgba(0,0,0,.05));
+  }
+  .cover-text{
+    position:absolute;left:0;right:0;bottom:34px;z-index:2;
+    text-align:center;
+    font-size:0.78rem;letter-spacing:0.24em;text-transform:uppercase;
+    color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.35);
+    padding:0 20px;
+  }
+  .cover.empty{border-bottom:1px solid var(--line);}
+  .cover.empty::before{display:none;}
+  .cover.empty .cover-text{color:var(--ink);text-shadow:none;top:50%;bottom:auto;transform:translateY(-50%);}
+  .cover.empty::after{
+    content:attr(data-label);
+    position:absolute;top:16px;left:0;right:0;text-align:center;
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--soft);font-size:1.1rem;
+  }
+
+  /* HERO (centrado) */
+  .hero{
+    text-align:center;
+    padding:44px 0 36px;
+    animation:rise .9s ease both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+  .hero h1{
+    font-size:clamp(2.6rem,5.6vw,4.4rem);
+    margin:26px auto 0;
+    max-width:20ch;
+  }
+  .hero h1{max-width:22ch;}
+  .hero p:not(.eyebrow){
+    margin:20px auto 0;
+    max-width:58ch;
+    color:var(--soft);
+    font-size:1.04rem;
+  }
+  .hero h1 + p{margin-top:30px;}
+  .btn{
+    display:inline-block;
+    margin-top:42px;
+    font-size:0.74rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--ink);
+    transition:color .2s,border-color .2s;
+  }
+  .btn:hover{color:var(--accent);border-color:var(--accent);}
+
+  /* PORTFOLIO */
+  section{padding:90px 0;}
+  .head{text-align:center;margin-bottom:44px;}
+  .head h2{font-size:clamp(2.1rem,3.8vw,3rem);margin-top:14px;}
+  .tabs{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:8px 30px;
+    margin-bottom:44px;
+  }
+  .tabs button{
+    background:none;border:0;cursor:pointer;
+    font-family:'Work Sans',sans-serif;font-weight:300;
+    font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--soft);padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition:color .2s,border-color .2s;
+  }
+  .tabs button:hover{color:var(--ink);}
+  .tabs button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink);}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    align-items:start;
+  }
+  .grid figure{
+    background:var(--tint);
+    overflow:hidden;
+    cursor:zoom-in;
+    position:relative;
+  }
+  .grid figure.tall{aspect-ratio:4/5;}
+  .grid figure.wide{aspect-ratio:3/2;}
+  .grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .grid figure:hover img{transform:scale(1.02);}
+  .grid figure.empty{cursor:default;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .grid figure.empty::after{
+    content:attr(data-label);
+    font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--soft);font-size:0.9rem;
+  }
+  @media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.grid{grid-template-columns:1fr;}}
+
+  /* LIGHTBOX */
+  .lb{
+    position:fixed;inset:0;background:rgba(255,255,255,.97);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:30px;
+  }
+  .lb.open{display:flex;}
+  .lb img{max-height:92vh;max-width:92vw;object-fit:contain;}
+  .lb button{
+    position:absolute;top:22px;right:28px;background:none;border:0;
+    font-size:1.8rem;cursor:pointer;color:var(--ink);
+  }
+
+  /* CÓMO TRABAJO */
+  .how{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .how-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:48px;text-align:center;
+  }
+  .how h3{font-size:1.5rem;margin-bottom:12px;}
+  .how p{color:var(--soft);font-size:0.97rem;max-width:30ch;margin:0 auto;}
+  @media (max-width:720px){.how-grid{grid-template-columns:1fr;gap:36px;}}
+
+  /* SOBRE MÍ */
+  .about{
+    display:grid;grid-template-columns:0.8fr 1fr;gap:70px;align-items:center;
+  }
+  .about figure{aspect-ratio:3/4;background:var(--tint);border:1px solid var(--line);overflow:hidden;}
+  .about figure img{width:100%;height:100%;object-fit:cover;}
+  .about h2{font-size:clamp(2.1rem,3.6vw,2.8rem);margin:14px 0 22px;}
+  .about p{color:var(--soft);margin-bottom:16px;max-width:50ch;}
+  @media (max-width:820px){.about{grid-template-columns:1fr;gap:36px;}}
+
+  /* SESIONES */
+  .sessions{border-top:1px solid var(--line);}
+  .s-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;}
+  .s-item{text-align:center;}
+  .s-item h3{font-size:1.6rem;margin-bottom:12px;}
+  .s-item p{color:var(--soft);font-size:0.97rem;}
+  @media (max-width:820px){.s-grid{grid-template-columns:1fr;gap:40px;}}
+
+  /* POR QUÉ */
+  .why{text-align:center;border-top:1px solid var(--line);}
+  .why h2{font-size:clamp(2.1rem,3.8vw,3rem);margin:14px auto 22px;max-width:20ch;}
+  .why p:not(.eyebrow){color:var(--soft);max-width:52ch;margin:0 auto;}
+
+  /* CONTACTO */
+  .contact{text-align:center;border-top:1px solid var(--line);}
+  .contact h2{font-size:clamp(2.2rem,4vw,3.2rem);margin:14px auto 20px;max-width:18ch;}
+  .contact p{color:var(--soft);max-width:44ch;margin:0 auto;}
+  .contact-actions{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin-top:12px;}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;}
+  footer .wrap{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:0.78rem;color:var(--soft);letter-spacing:0.04em;
+  }
+  footer a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#" class="logo">Esther Dolado <span>· Fotografía de maternidad</span></a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="links" id="links">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#sesiones">Sesiones</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <figure class="cover" data-label="portada.jpg">
+    <img src="fotos/portada.jpg" alt="Fotografía documental de un recién nacido" onerror="this.parentNode.classList.add('empty');this.remove()">
+    <p class="cover-text">Fotografía de maternidad · Madrid</p>
+  </figure>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Fotografía documental de maternidad y familia</h1>
+      <p>Realizo sesiones de fotografía documental para familias que quieren conservar recuerdos auténticos de su historia.</p>
+      <p>Fotografío el embarazo, los primeros días de vuestro bebé, la maternidad y la vida cotidiana en familia. Sesiones naturales, en vuestra casa o en exteriores, en las que documento vuestros vínculos, gestos y momentos compartidos sin poses forzadas ni escenarios artificiales.</p>
+      <p>Mi objetivo es crear un reportaje fotográfico que refleje quiénes sois y cómo es vuestra vida en esta etapa, para que podáis conservarla y volver a ella con el paso del tiempo.</p>
+    </div>
+  </section>
+
+  <section id="portfolio" style="padding-top:0;">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Portfolio</p>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap how-grid">
+      <div>
+        <h3>Sin posados</h3>
+        <p>No te voy a pedir que mires a cámara ni que repitas un gesto. Tú vives el momento y yo estoy cerca para guardarlo.</p>
+      </div>
+      <div>
+        <h3>Luz natural</h3>
+        <p>Me quedo con la luz que haya: la de tu ventana, la del parque, la de esa tarde en concreto.</p>
+      </div>
+      <div>
+        <h3>A tu ritmo</h3>
+        <p>Si hoy toca descansar, descansamos. La sesión se adapta a cómo te encuentres, no al revés.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <figure><img src="fotos/esther.jpg" alt="Esther Dolado" onerror="this.remove()"></figure>
+      <div>
+        <p class="eyebrow">Esta soy yo</p>
+        <h2>Soy Esther, y me encanta contar historias de maternidad</h2>
+        <p>Fotografío embarazos, postparto, recién nacidos y familias en Madrid desde una mirada documental: sin dirigir, sin escenificar, atenta a esos gestos pequeños que luego son los que más se echan de menos.</p>
+        <p>No busco la foto perfecta, busco la tuya. Pasados los primeros minutos suele ocurrir algo bonito: te olvidas de que estoy ahí y empiezas a ser tú.</p>
+        <p>Cuéntame cómo estás viviendo esta etapa. Yo me encargo de que no se te olvide.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sesiones" class="sessions">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Sesiones</p>
+        <h2>Cada etapa tiene su momento</h2>
+      </div>
+      <div class="s-grid">
+        <div class="s-item">
+          <h3>Embarazo</h3>
+          <p>Una sesión tranquila para guardar cómo te sientes ahora: la barriga, las ganas, los nervios, la espera. En casa o al aire libre, como prefieras.</p>
+        </div>
+        <div class="s-item">
+          <h3>Postparto y recién nacido</h3>
+          <p>Los primeros días, tal y como son: el cansancio, el pelo recogido de cualquier manera, esa carita que cambia cada día. Voy a tu casa y me muevo sin hacer ruido.</p>
+        </div>
+        <div class="s-item">
+          <h3>Familia</h3>
+          <p>Un rato juntos sin guion. Jugamos, paseamos, nos reímos, y yo voy guardando lo que pasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <p class="eyebrow">Para que no se te olvide</p>
+      <h2>Estos días pasan más rápido de lo que parece</h2>
+      <p>Las fotos del móvil se acumulan y casi nunca vuelves a mirarlas. Unas fotos hechas con calma, impresas o en un álbum, se quedan en casa, y dentro de veinte años podrás enseñárselas a quien más te importe.</p>
+      <a href="#contacto" class="btn">Cuéntame tu historia</a>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contacto</p>
+      <h2>¿Me cuentas tu historia?</h2>
+      <p>Escríbeme por Instagram y hablamos con calma de tu sesión, las fechas y las tarifas. Sin compromiso.</p>
+      <div class="contact-actions">
+        <a href="https://instagram.com/estherdoladophoto" target="_blank" rel="noopener" class="btn">Escríbeme por Instagram</a>
+        <a href="mailto:TUEMAIL@ejemplo.com" class="btn">Por email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Esther Dolado · Fotografía de maternidad · Madrid</span>
+    <a href="https://instagram.com/estherdoladophoto" target="_blank" rel="noopener">@estherdoladophoto</a>
+  </div>
+</footer>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button id="lbClose" aria-label="Cerrar">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+  /* ============ CONFIGURACIÓN DEL PORTFOLIO ============
+     Sube tus fotos a una carpeta llamada "fotos" junto a este archivo
+     con estos nombres: embarazo-1.jpg, embarazo-2.jpg ...
+                        postparto-1.jpg ...  familia-1.jpg ...
+     "count" = cuántas fotos tienes en cada categoría. */
+  const CATEGORIES = [
+    { id:'embarazo',  label:'Embarazo',                   count:6 },
+    { id:'postparto', label:'Postparto y recién nacido',  count:6 },
+    { id:'familia',   label:'Familia',                    count:6 }
+  ];
+  const SHAPES = ['tall','wide','tall','tall','wide','tall']; // formas alternas
+
+  const tabs = document.getElementById('tabs');
+  const grid = document.getElementById('grid');
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+
+  function show(cat){
+    tabs.querySelectorAll('button').forEach(b =>
+      b.setAttribute('aria-pressed', b.dataset.id === cat.id));
+    grid.innerHTML = '';
+    for(let i=1;i<=cat.count;i++){
+      const fig = document.createElement('figure');
+      fig.className = SHAPES[(i-1)%SHAPES.length];
+      const img = document.createElement('img');
+      img.src = `fotos/${cat.id}-${i}.jpg`;
+      img.alt = `${cat.label} ${i}`;
+      img.loading = 'lazy';
+      img.onerror = () => { img.remove(); fig.classList.add('empty'); fig.dataset.label = `${cat.id}-${i}.jpg`; };
+      fig.appendChild(img);
+      fig.addEventListener('click', () => {
+        if(fig.classList.contains('empty')) return;
+        lbImg.src = img.src; lbImg.alt = img.alt;
+        lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+      });
+      grid.appendChild(fig);
+    }
+  }
+
+  CATEGORIES.forEach((cat, idx) => {
+    const b = document.createElement('button');
+    b.textContent = cat.label;
+    b.dataset.id = cat.id;
+    b.addEventListener('click', () => show(cat));
+    tabs.appendChild(b);
+  });
+  show(CATEGORIES[0]);
+
+  function closeLb(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); }
+  lb.addEventListener('click', e => { if(e.target !== lbImg) closeLb(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLb(); });
+
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('links');
+  burger.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); burger.setAttribute('aria-expanded', false);
+  }));
+</script>
+</body>
+</html>
